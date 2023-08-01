@@ -1,8 +1,6 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/CarlosGenuino/go-opportunities/config"
 	"github.com/CarlosGenuino/go-opportunities/router"
 )
