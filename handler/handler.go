@@ -18,12 +18,6 @@ func InitilizeHandler() {
 	db = config.GetSQLite()
 }
 
-func ReadOppeningHandler(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{
-		"message": "Read Oppening",
-	})
-}
-
 func UpdateOppeningHandler(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"message": "Update Oppening",
