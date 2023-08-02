@@ -29,9 +29,3 @@ func UpdateOppeningHandler(ctx *gin.Context) {
 		"message": "Update Oppening",
 	})
 }
-
-func ListOppeningsHandler(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{
-		"message": "List of Oppening",
-	})
-}
