@@ -7,7 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func CreateOppeningHandler(ctx *gin.Context) {
+func CreateOpeningHandler(ctx *gin.Context) {
 	request := CreateOpeningRequest{}
 	ctx.BindJSON(&request)
 
@@ -17,7 +17,7 @@ func CreateOppeningHandler(ctx *gin.Context) {
 		return
 	}
 
-	oppening := schema.Oppening{
+	opening := schema.Opening{
 		Role:     request.Role,
 		Company:  request.Company,
 		Location: request.Location,
@@ -26,10 +26,10 @@ func CreateOppeningHandler(ctx *gin.Context) {
 		Salary:   request.Salary,
 	}
 
-	if err := db.Create(&oppening).Error; err != nil {
-		logger.Errorf("Error Persisting Openning: %v", err.Error())
+	if err := db.Create(&opening).Error; err != nil {
+		logger.Errorf("Error Persisting Opening: %v", err.Error())
 		sendError(ctx, http.StatusInternalServerError, err.Error())
 		return
 	}
-	sendSuccess(ctx, "create-oppening", oppening)
+	sendSuccess(ctx, "create-opening", opening)
 }

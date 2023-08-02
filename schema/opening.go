@@ -6,7 +6,7 @@ import (
 	"gorm.io/gorm"
 )
 
-type Oppening struct {
+type Opening struct {
 	gorm.Model
 	Role     string
 	Company  string
@@ -16,7 +16,7 @@ type Oppening struct {
 	Salary   int64
 }
 
-type OppeningResponse struct {
+type OpeningResponse struct {
 	Id        uint      `json:"id"`
 	Role      string    `json:"role"`
 	Company   string    `json:"company"`

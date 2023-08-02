@@ -30,12 +30,6 @@ func UpdateOppeningHandler(ctx *gin.Context) {
 	})
 }
 
-func DeleteOppeningHandler(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{
-		"message": "Delete Oppening",
-	})
-}
-
 func ListOppeningsHandler(ctx *gin.Context) {
 	ctx.JSON(http.StatusOK, gin.H{
 		"message": "List of Oppening",
