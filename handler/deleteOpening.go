@@ -15,17 +15,19 @@ func DeleteOpeningHandler(ctx *gin.Context) {
 		sendError(ctx, http.StatusBadRequest, "requestParameter id is required")
 		return
 	}
-	oppening := schema.Opening{}
+	opening := schema.Opening{}
 
-	if err := db.First(&oppening, id).Error; err != nil {
+	if err := db.First(&opening, id).Error; err != nil {
 		logger.Errorf("openning with id %s not found", id)
 		sendError(ctx, http.StatusNotFound, fmt.Sprintf("openning with id %s not found", id))
 		return
 	}
 
-	if err := db.Delete(&oppening).Error; err != nil {
+	if err := db.Delete(&opening).Error; err != nil {
 		logger.Errorf("erro deleting opening with id %s", id)
 		sendError(ctx, http.StatusInternalServerError, fmt.Sprintf("error deleting opening with id: %s", id))
 		return
 	}
+
+	sendSuccess(ctx, "delete-opening",opening)
 }
