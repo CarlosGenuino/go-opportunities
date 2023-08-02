@@ -3,13 +3,19 @@ package handler
 import (
 	"net/http"
 
+	"github.com/CarlosGenuino/go-opportunities/config"
 	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
-func CreateOppeningHandler(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, gin.H{
-		"message": "Create Oppening",
-	})
+var (
+	logger *config.Logger
+	db     *gorm.DB
+)
+
+func InitilizeHandler() {
+	logger = config.GetLogger("handler")
+	db = config.GetSQLite()
 }
 
 func ReadOppeningHandler(ctx *gin.Context) {
