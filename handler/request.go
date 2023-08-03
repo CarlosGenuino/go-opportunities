@@ -42,3 +42,19 @@ func (c *CreateOpeningRequest) Validate() error {
 	}
 	return nil
 }
+
+type UpdateOpeningRequest struct {
+	Role     string `json:"role"`
+	Company  string `json:"company"`
+	Location string `json:"location"`
+	Remote   *bool  `json:"remote"`
+	Link     string `json:"link"`
+	Salary   int64  `json:"salary"`
+}
+
+func (u *UpdateOpeningRequest) Validate() error {
+	if u.Role == "" && u.Company == "" && u.Location == "" && u.Link == "" && u.Remote == nil && u.Salary <= 0 {
+		return fmt.Errorf("Request Body Empty or Malformated")
+	}
+	return nil
+}

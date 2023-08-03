@@ -13,7 +13,7 @@ func initializeRoutes(router *gin.Engine) {
 
 	v1.POST("/opening", handler.CreateOpeningHandler)
 
-	v1.PUT("/opening", handler.UpdateOppeningHandler)
+	v1.PUT("/opening", handler.UpdateOpeningHandler)
 
 	v1.DELETE("/opening", handler.DeleteOpeningHandler)
 

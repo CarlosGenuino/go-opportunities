@@ -1,6 +1,7 @@
 package schema
 
 import (
+	"fmt"
 	"time"
 
 	"gorm.io/gorm"
@@ -14,6 +15,35 @@ type Opening struct {
 	Remote   bool
 	Link     string
 	Salary   int64
+}
+
+func errCannotBeBlank(field string) error {
+	return fmt.Errorf("%s cannot be blank", field)
+
+}
+
+func (o *Opening) Validate() error {
+	if o.ID <= 0 {
+		return fmt.Errorf("invalid Id")
+	}
+	if o.Role == "" {
+		return errCannotBeBlank("Role")
+	}
+	if o.Company == "" {
+		return errCannotBeBlank("Company")
+	}
+	if o.Location == "" {
+		return errCannotBeBlank("Location")
+	}
+
+	if o.Link == "" {
+		return errCannotBeBlank("Link")
+	}
+
+	if o.Salary <= 0 {
+		return fmt.Errorf("Salary cannot be zero or under")
+	}
+	return nil
 }
 
 type OpeningResponse struct {
