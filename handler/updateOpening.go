@@ -12,6 +12,8 @@ func UpdateOpeningHandler(ctx *gin.Context) {
 	update := UpdateOpeningRequest{}
 	ctx.BindJSON(&update)
 
+	logger.Info(update)
+
 	if err := update.Validate(); err != nil {
 		logger.Errorf("validation error: %s", err.Error())
 		sendError(ctx, http.StatusBadRequest, err.Error())
@@ -66,6 +68,7 @@ func UpdateOpeningHandler(ctx *gin.Context) {
 	if err := db.Save(&opening).Error; err != nil {
 		logger.Errorf("Error updating opening: %s", err.Error())
 		sendError(ctx, http.StatusInternalServerError, err.Error())
+		return
 	}
 
 	sendSuccess(ctx, "update-opening", opening)
